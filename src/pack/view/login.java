@@ -102,7 +102,7 @@ public class login extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(210, 260, 70, 40);
 
-        setBounds(0, 0, 324, 370);
+        setBounds(0, 0, 317, 369);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

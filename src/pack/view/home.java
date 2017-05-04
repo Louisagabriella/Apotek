@@ -140,6 +140,11 @@ public class home extends javax.swing.JFrame {
         jLabel1.setBounds(10, 20, 40, 30);
 
         txtadmin.setEditable(false);
+        txtadmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtadminActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtadmin);
         txtadmin.setBounds(60, 20, 130, 30);
 
@@ -219,7 +224,7 @@ public class home extends javax.swing.JFrame {
         jPanel3.add(Btn_Simpan);
         Btn_Simpan.setBounds(20, 20, 90, 30);
 
-        Btn_Ubah.setText("PERBARUI");
+        Btn_Ubah.setText("UBAH");
         Btn_Ubah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_UbahActionPerformed(evt);
@@ -262,6 +267,11 @@ public class home extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -337,6 +347,15 @@ public class home extends javax.swing.JFrame {
         String user1 = login.user;
         txtadmin.setText(user1);
     }//GEN-LAST:event_formWindowOpened
+
+    private void txtadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtadminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtadminActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        ctoko.isiField(jTable1.getSelectedRow());
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
