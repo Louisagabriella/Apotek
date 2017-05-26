@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pack.control; 
+package pack.Controller; 
  
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,24 +11,24 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import pack.dao.daoToko;
-import pack.dao.implementToko;
-import pack.model.m_toko;
-import pack.view.home;
-import pack.model.tableModelToko;
+import pack.Dao.daoObat;
+import pack.Model.m_obat;
+import pack.View.Home;
+import pack.Model.tableModelObat;
+import pack.Dao.implementObat;
 
 /**
  *
  * @author Louisa
  */
-public class controllerToko {
-    home hm;
-    implementToko impToko;
-    List<m_toko> lt;
+public class ControllerObat {
+    Home hm;
+    implementObat impToko;
+    List<m_obat> lt;
 
-    public controllerToko(home hm) {
+    public ControllerObat(Home hm) {
         this.hm = hm;
-        impToko = new daoToko();
+        impToko = new daoObat();
         lt = impToko.getAll();
     }
 
@@ -52,7 +52,7 @@ public class controllerToko {
     }     
     //menyimpan data     
     public void SimpanData() {
-        m_toko toko = new m_toko();
+        m_obat toko = new m_obat();
         toko.setkode(hm.getTxtKode().getText());
         toko.setnama(hm.getTxtNama().getText());
         toko.setharga(hm.getTxtHarga().getText());
@@ -62,7 +62,7 @@ public class controllerToko {
     }     
     //mengubah data     
     public void Ubah() {
-        m_toko toko = new m_toko();
+        m_obat toko = new m_obat();
         toko.setkode(hm.getTxtKode().getText());
         toko.setnama(hm.getTxtNama().getText());
         toko.setkategori(hm.getCbKategori().getSelectedItem().toString());
@@ -72,16 +72,16 @@ public class controllerToko {
     }
     public void isiTable() {
         lt = impToko.getAll();
-        tableModelToko tmt = new tableModelToko(lt);
+        tableModelObat tmt = new tableModelObat(lt);
         hm.getTableData().setModel(tmt);
     }
 
     public void isiField(int row) {
-        hm.getTxtKode().setText(lt.get(row).getkode().toString());
-        hm.getTxtNama().setText(lt.get(row).getnama().toString());
-        hm.getCbKategori().setSelectedItem(lt.get(row).getkategori().toString());
-        hm.getCbJenis().setSelectedItem(lt.get(row).getjenis().toString());
-        hm.getTxtHarga().setText(lt.get(row).getharga().toString());
+       hm.getTxtKode().setText(lt.get(row).getkode().toString());
+       hm.getTxtNama().setText(lt.get(row).getnama().toString());
+       hm.getCbKategori().setSelectedItem(lt.get(row).getkategori().toString());
+       hm.getCbJenis().setSelectedItem(lt.get(row).getjenis().toString());
+       hm.getTxtHarga().setText(lt.get(row).getharga().toString());
     }
 
     public void CariKategori() {
@@ -95,7 +95,7 @@ public class controllerToko {
     private void isiTableCariKategori() {
         String item = hm.getCbCariKategori().getSelectedItem().toString();
         lt = impToko.getCariKategori(item);
-        tableModelToko tmt = new tableModelToko(lt);
+        tableModelObat tmt = new tableModelObat(lt);
         hm.getTableData().setModel(tmt);
     }
 }

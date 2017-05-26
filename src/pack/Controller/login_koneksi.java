@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pack.control; 
+package pack.Controller; 
  
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Driver;
@@ -20,7 +20,8 @@ public class login_koneksi {
     public static Connection GetConnection() throws SQLException {
         if (koneksi == null) {
             Driver driver = new Driver();
-            koneksi = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/toko? zeroDateTimeBehavior=convertToNull", "root", "");
+            koneksi = (Connection) DriverManager.getConnection
+                      ("jdbc:mysql://localhost/toko? zeroDateTimeBehavior=convertToNull", "root", "");
         }
         return koneksi;
     }

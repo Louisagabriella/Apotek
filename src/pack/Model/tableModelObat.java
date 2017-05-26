@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pack.model;
+package pack.Model;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -12,10 +12,10 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Louisa
  */
-public class tableModelToko extends AbstractTableModel {
-    List<m_toko> lt;
+public class tableModelObat extends AbstractTableModel {
+    List<m_obat> lt;
 
-    public tableModelToko(List<m_toko> lt) {
+    public tableModelObat(List<m_obat> lt) {
         this.lt = lt;
     }
 
@@ -32,15 +32,15 @@ public class tableModelToko extends AbstractTableModel {
     public String getColumnName(int column) {
         switch (column) {
             case 0:
-                return "Kode_Barang";
+                return "Kode Obat";
             case 1:
-                return "Nama_Barang";
+                return "Nama Obat";
             case 2:
-                return "Kategori";
+                return "Kategori Obat";
             case 3:
-                return "Jenis";
+                return "Jenis Kemasan";
             case 4:
-                return "Harga";
+                return "Harga Obat";
             default:
                 return null;
         }

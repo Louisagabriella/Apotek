@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pack.dao;
+package pack.Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,14 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pack.control.c_koneksi;
-import pack.model.m_toko;
+import pack.Controller.c_koneksi;
+import pack.Model.m_obat;
 
 /**
  *
  * @author Louisa
  */
-public class daoToko implements implementToko {
+public class daoObat implements implementObat {
     Connection connection;
     public String TampilData = "SELECT * FROM `barang`";
     public String UbahData = "UPDATE `barang` SET `Nama_Barang`=?, `Harga`=?, `Kategori`=?, `Jenis`=? Where `Kode_Barang`=?;";
@@ -29,16 +29,16 @@ public class daoToko implements implementToko {
     public String HapusData = "DELETE FROM `barang` WHERE Kode_Barang=?";
     public String CariKategori = "SELECT `Kode_Barang`, `Nama_Barang`, `Kategori`, `Jenis`, `Harga` FROM `barang` WHERE Kategori like ?";
 
-    public daoToko() {
+    public daoObat() {
         connection = c_koneksi.setKoneksi();
     }
 
     @Override
-    public void TampilData(m_toko a) {
+    public void TampilData(m_obat a) {
     }
 
     @Override
-    public void UbahData(m_toko a) {
+    public void UbahData(m_obat a) {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(UbahData);
@@ -49,12 +49,12 @@ public class daoToko implements implementToko {
             statement.setString(4, a.getjenis());
             statement.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(daoToko.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(daoObat.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
-    public void SimpanData(m_toko a) {
+    public void SimpanData(m_obat a) {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(SimpanData);
@@ -69,22 +69,22 @@ public class daoToko implements implementToko {
                 a.setkode(rs.getString(1));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(daoToko.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(daoObat.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
 //menampilkan data ke tabel sesuai pencarian     
     @Override
-    public List<m_toko> getCariKategori(String kategori) {
-        List<m_toko> lt = null;
+    public List<m_obat> getCariKategori(String kategori) {
+        List<m_obat> lt = null;
         try {
-            lt = new ArrayList<m_toko>();
+            lt = new ArrayList<m_obat>();
             PreparedStatement st = connection.prepareStatement(CariKategori);
             st.setString(1, "%" + kategori + "%");
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                m_toko toko = new m_toko();
+                m_obat toko = new m_obat();
                 toko.setkode(rs.getString("Kode_Barang"));
                 toko.setnama(rs.getString("Nama_Barang"));
                 toko.setkategori(rs.getString("Kategori"));
@@ -93,21 +93,21 @@ public class daoToko implements implementToko {
                 lt.add(toko);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(daoToko.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(daoObat.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lt;
     }
     
     //menampilkan data ke Tabel     
     @Override
-    public List<m_toko> getAll() {
-        List<m_toko> lt = null;
+    public List<m_obat> getAll() {
+        List<m_obat> lt = null;
         try {
-            lt = new ArrayList<m_toko>();
+            lt = new ArrayList<m_obat>();
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(TampilData);
             while (rs.next()) {
-                m_toko toko = new m_toko();
+                m_obat toko = new m_obat();
                 toko.setkode(rs.getString("Kode_Barang"));
                 toko.setnama(rs.getString("Nama_Barang"));
                 toko.setkategori(rs.getString("Kategori"));
@@ -116,7 +116,7 @@ public class daoToko implements implementToko {
                 lt.add(toko);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(daoToko.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(daoObat.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lt;
     }    
@@ -129,7 +129,7 @@ public class daoToko implements implementToko {
             statement.setString(1, kode);
             statement.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(daoToko.class
+            Logger.getLogger(daoObat.class
                     .getName()
             ).log(Level.SEVERE, null, ex);
         }
@@ -142,7 +142,7 @@ public class daoToko implements implementToko {
             statement.setInt(1, kode);
             statement.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(daoToko.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(daoObat.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

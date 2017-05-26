@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pack.model;
+package pack.Model;
 
 /**
  *
  * @author Louisa
  */
-public class m_toko {
+public class m_obat {
     public String Nama_Barang, Jenis, Harga, Kategori;
     public String Kode_Barang;
 

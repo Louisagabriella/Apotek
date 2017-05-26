@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pack.dao;
+package pack.Dao;
 import java.util.List;
-import pack.model.m_toko;
+import pack.Model.m_obat;
 /**
  *
  * @author Louisa
  */
-public interface implementToko {
-    public void TampilData(m_toko a);
-    public void UbahData(m_toko a);
-    public void SimpanData(m_toko a);
+public interface implementObat {
+    public void TampilData(m_obat a);
+    public void UbahData(m_obat a);
+    public void SimpanData(m_obat a);
     public void HapusData(String kode);
-    public List<m_toko> getCariKategori(String kategori);
-    public List<m_toko> getAll();
+    public List<m_obat> getCariKategori(String kategori);
+    public List<m_obat> getAll();
     public String user = "";
 }
